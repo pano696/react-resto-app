@@ -4,7 +4,7 @@ export default class RestoService {
     this._baseUrl = 'http://localhost:3000'
   }
 
-  getData = async (url) => {
+  getResource = async (url) => {
     const response = await fetch(`${this._baseUrl}${url}`)
     if (!response.ok) throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 
@@ -13,9 +13,6 @@ export default class RestoService {
   }
 
   getMenuItems = async () => {
-    const menuItems = await this.getData('/menu')
-    console.log(menuItems);
-
-    return menuItems;
+    return await this.getResource('/menu/')
   }
 }

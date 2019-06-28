@@ -19,6 +19,14 @@ const App = () => {
                 path='/cart'
                 component={CartPage}
                 exact/>
+              <Route
+                path='/dish/:id'
+                exact
+                render={
+                  ({match, location, history}) => {
+                    return <Dish dishId={match.params.id} />
+                  }
+                }/>
             </Switch>
           </div>
         </Router>

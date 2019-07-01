@@ -9,7 +9,7 @@ const App = () => {
     return (
         <Router>
           <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
-            <AppHeader total={50}/>
+            <AppHeader/>
             <Switch>
               <Route
                 path='/'
@@ -18,15 +18,7 @@ const App = () => {
               <Route
                 path='/cart'
                 component={CartPage}
-                exact/>
-              <Route
-                path='/dish/:id'
-                exact
-                render={
-                  ({match, location, history}) => {
-                    return <Dish dishId={match.params.id} />
-                  }
-                }/>
+                exact/>/>
             </Switch>
           </div>
         </Router>

@@ -16,8 +16,24 @@ const menuError = () => {
   };
 };
 
+const addedToCart = (id) => {
+  return {
+    type: 'ITEM_ADD_TO_CART',
+    payload: id
+  };
+}
+
+const deleteFromCart = (id) => {
+  return {
+    type: 'ITEM_REMOVE_FRMO_CART',
+    payload: id
+  };
+}
+
 export {
   menuLoaded,
   menuRequested,
+  addedToCart,
+  deleteFromCart,
   menuError
 };

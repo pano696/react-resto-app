@@ -30,10 +30,24 @@ const deleteFromCart = (id) => {
   };
 }
 
+const sendCartRequsted = () => {
+  return {
+    type: 'SEND_CART_REQUSTED'
+  };
+};
+
+const sendCart = () => {
+  return {
+    type: 'SEND_CART'
+  };
+};
+
 export {
   menuLoaded,
   menuRequested,
   addedToCart,
   deleteFromCart,
-  menuError
+  menuError,
+  sendCartRequsted,
+  sendCart
 };

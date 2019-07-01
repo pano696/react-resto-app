@@ -1,9 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteFromCart} from '../../actions/'
+import {deleteFromCart, sendCartRequsted, sendCart} from '../../actions/'
+import WithRestoService from '../hoc';
+import Spiner from '../spinner';
 import './cart-table.scss';
 
-const CartTable = ({items, deleteFromCart}) => {
+const CartTable = ({items, loading, deleteFromCart, sendCartRequsted, sendCart, RestoService}) => {
+
+  const sendCartItems = () => {
+    if (items.length === 0) return;
+    sendCartRequsted();
+    RestoService.saveOrders({id:'', items})
+      .then(response => console.log(response))
+    sendCart();
+    document.querySelector('.cart__title').innerHTML = 'Ваш заказ отправлен в обработку.';
+  }
+
+  if (loading) return <Spiner />
+
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -22,19 +36,23 @@ const CartTable = ({items, deleteFromCart}) => {
                   )
                 })
               }
+              <button className="cart__send" style={items.length === 0 ? {display: 'none' } : {display: 'block' }} onClick={sendCartItems}>Отправить заказ</button>
             </div>
         </>
     );
 };
 
-const mapStateToProps = ({items}) => {
+const mapStateToProps = ({items, loading}) => {
   return {
-    items
+    items,
+    loading
   }
 }
 
 const mapDispatchToProps = {
-  deleteFromCart
+  deleteFromCart,
+  sendCartRequsted,
+  sendCart
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(CartTable));

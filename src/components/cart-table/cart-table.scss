@@ -60,4 +60,16 @@
       border-radius: 100%;
       border: 1px solid #fff;
   }
+  &__send {
+    margin: 20px auto;
+    padding: 10px;
+    display: block;
+    font-weight: 500;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, .8);
+    border: none;
+    cursor: pointer
+
+  }
 }

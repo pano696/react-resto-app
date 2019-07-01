@@ -45,7 +45,7 @@ const reducer = (state = initialState, action) => {
           num: 1
         }
         newItems = [...state.items, newItem]
-      }
+      };
       return {
         ...state,
         items: newItems
@@ -56,6 +56,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         items: newItemsAfterRemove
+      }
+    case 'SEND_CART_REQUSTED':
+      return {
+        ...state,
+        loading: true
+      }
+    case 'SEND_CART':
+      return {
+        ...state,
+        items: [],
+        loading: false,
+        error: false
       }
     default:
       return state;

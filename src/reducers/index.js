@@ -50,7 +50,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         items: newItems
       };
-    case 'ITEM_REMOVE_FRMO_CART':
+    case 'ITEM_REMOVE_FROM_CART':
       const idRemove = action.payload;
       const newItemsAfterRemove = state.items.filter(item => item.id !== idRemove);
       return {

@@ -37,7 +37,7 @@ const WithData = (View) => {
   return class extends Component {
 
     componentDidMount() {
-      const {RestoService, menuLoaded, menuRequested} = this.props;
+      const {RestoService, menuLoaded, menuRequested, menuError} = this.props;
       menuRequested();
       RestoService.getMenuItems()
         .then(response => menuLoaded(response))

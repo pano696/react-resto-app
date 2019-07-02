@@ -25,7 +25,7 @@ const addedToCart = (id) => {
 
 const deleteFromCart = (id) => {
   return {
-    type: 'ITEM_REMOVE_FRMO_CART',
+    type: 'ITEM_REMOVE_FROM_CART',
     payload: id
   };
 }
